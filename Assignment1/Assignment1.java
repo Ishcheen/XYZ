@@ -42,10 +42,32 @@ class ReadAFile{
             }
         }
         catch ( IOException ioerror){
-            System.out.println("IO Exception raised while reading url file");
+            System.out.println("IO Exception raised");
         }
     }
-    
+
+    public static int MatchCount(String word){
+        if(isEmpty(word)){
+            return 0;
+        }
+        int index=0;
+        int count=0;
+        File content= new File("./Content.txt");
+        FileReader fileReader=new FileReader(content);
+        BufferedReader reader = new BufferedReader(fileReader);
+        String line;
+        while((line=reader.readLine())!=null){
+           index=line.indexOf(word, index);
+           if(index!=-1){
+               count++;
+               index+=word.length();
+           }else{
+               break;
+           }
+        }
+        return count;
+    }
+
 
 }
 
