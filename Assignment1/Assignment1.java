@@ -28,7 +28,17 @@ class ReadAFile{
                 DownloadWebPage(line);
                 BufferedWriter writer= new BufferedWriter(new FileWriter("Output1.txt"));
                 writer.write(line);
-                
+                /**To read a word from wrods.txt */
+                File wordFile=new File("./words.txt");
+                FileReader fileRdr=new FileReader(wordFile);
+                BufferedReader rdr=new BufferedReader(fileRdr);
+                String word;
+                int n=0;
+                while((word=rdr.readLine())!=null && n<3){
+                    n++;
+                    int count=MatchCount(word);
+                    writer.write(word+"-"+count);
+                }
             }
         }
         catch ( IOException ioerror){
