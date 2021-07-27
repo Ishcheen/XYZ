@@ -10,12 +10,34 @@ import java.io.*;
 public class Assignment1{
     public static void main(String[] args)
     {
-        String url="https://docs.oracle.com/javase/6/docs/api/java/util/regex/package-summary.html";
-        Download.DownloadWebPage(url);
+        
     }
     
 }
 
+
+class ReadAFile{
+    
+    public static void ReadUrls(){
+        try{
+            File urlsFile= new File("./urls.txt");
+            FileReader fileReader=new FileReader(urlsFile);
+            BufferedReader reader = new BufferedReader(fileReader);
+            String line;
+            while((line=reader.readLine())!=null){
+                DownloadWebPage(line);
+                BufferedWriter writer= new BufferedWriter(new FileWriter("Output1.txt"));
+                writer.write(line);
+                
+            }
+        }
+        catch ( IOException ioerror){
+            System.out.println("IO Exception raised while reading url file");
+        }
+    }
+    
+
+}
 
 /**
  * Read and download web page content from given URLs to a html file.
