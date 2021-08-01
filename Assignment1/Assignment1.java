@@ -11,6 +11,7 @@ public class Assignment1{
     public static void main(String[] args)
     {
         ReadAFile.ReadUrls();
+        ReadAFile.ReadWords();
     }
     
 }
@@ -29,7 +30,7 @@ class ReadAFile{
                 DownloadWebPage(line);
                 writer.write(line);
                 writer.write("\n");
-                /**To read a word from words.txt */
+               
                 File wordFile=new File("words.txt");
                 FileReader fileRdr=new FileReader(wordFile);
                 BufferedReader rdr=new BufferedReader(fileRdr);
@@ -48,7 +49,34 @@ class ReadAFile{
             System.out.println("IO Exception raised");
         }
     }
-
+    
+    public static void ReadWords(){
+        try{
+            File wordFile=new File("./words.txt");
+            FileReader fileRdr=new FileReader(wordFile);
+            BufferedReader rdr=new BufferedReader(fileRdr);
+            String word;
+            while((word=rdr.readLine())!=null){
+                int count=0;
+                File urlsFile= new File("./urls.txt");
+                FileReader fileReader=new FileReader(urlsFile);
+                BufferedReader reader = new BufferedReader(fileReader);
+                String line;
+                BufferedWriter writer= new BufferedWriter(new FileWriter("Output2.txt",true));
+                while((line=reader.readLine())!=null){
+                    DownloadWebPage(line);
+                    count+=MatchCount(word);
+                }
+                writer.write(word+"-"+count);
+                writer.write("\n");
+                writer.close();
+            }
+        }
+        catch ( IOException ioerror){
+            System.out.println("IO Exception raised");
+        }
+        
+    }
     public static int MatchCount(String word){
         if(word==null){
             return 0;
