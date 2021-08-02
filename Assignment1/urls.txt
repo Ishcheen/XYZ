@@ -1,0 +1,4 @@
+https://www.javatpoint.com/difference-between-jdk-jre-and-jvm
+https://www.javatpoint.com/java-data-types
+https://www.javatpoint.com/java-comments
+https://www.javatpoint.com/java-oops-concepts
