@@ -68,4 +68,29 @@ class Shape implements ShapeInterface{
     public double volume(double a, double b,double c){
         return (a*b*c);
     }
+    public double setInput(){
+        Scanner sc=new Scanner(System.in);
+        boolean isValid=false;
+        while(!isValid){
+            try{
+                while(!sc.hasNextDouble()){
+                    String input=sc.next();
+                    throw new InputMismatchException();
+                }
+                double x=sc.nextDouble();
+                if(x<0){
+                    throw new IllegalArgumentException();
+                }
+                isValid=true;
+                return x;
+            }
+            catch(InputMismatchException e){
+                System.out.println("Please enter a valid number");
+            }
+            catch(IllegalArgumentException e){
+                System.out.println("Please enter a positive number");
+            }
+        }
+        return 0;
+    }
 }
