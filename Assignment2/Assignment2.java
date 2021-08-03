@@ -45,4 +45,27 @@ public class Assignment2{
     }
 }
 
-
+class Shape implements ShapeInterface{
+    static final double PI=3.14;
+    public double area(double a){
+       return (a*a);
+    }
+    public double area(double a, double b){
+        return (a*b);
+    }
+    public double perimeter(double a){
+        return a;
+    }
+    public double perimeter(double a,double b){
+        return  (2*(a+b));
+    } 
+    public double perimeter(double a,double b,double c){
+        return  (a+b+c);
+    } 
+    public double volume(double a){
+        return (a*a*a);
+    }
+    public double volume(double a, double b,double c){
+        return (a*b*c);
+    }
+}
