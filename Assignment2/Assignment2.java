@@ -136,3 +136,19 @@ class Rectangle extends Shape{
         System.out.println("Perimeter of the rectangle is "+this.perimeter(this.length,this.breadth));
     }
 }
+
+class Square extends Shape{
+    private double length;
+    public void setLength(){
+        this.length=this.setInput();
+    }
+    public double getLength(){
+        return this.length;
+    }
+    Square(){
+        System.out.println("Enter the length of a side of the square:");
+        this.setLength();
+        System.out.println("Area of the square is "+this.area(this.length));
+        System.out.println("Perimeter of the square is "+4*this.perimeter(this.length));
+    }
+}
