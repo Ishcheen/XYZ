@@ -111,3 +111,28 @@ class Circle extends Shape{
         System.out.println("Circumference of the circle is "+2*this.PI*this.perimeter(this.radius));
     }
 }
+
+class Rectangle extends Shape{
+    private double length;
+    private double breadth;
+    public void setLength(){
+        this.length=this.setInput();
+    }
+    public double getLength(){
+        return this.length;
+    }
+    public void setBreadth(){
+        this.breadth=this.setInput();
+    }
+    public double getBreadth(){
+        return this.breadth;
+    }
+    Rectangle(){
+        System.out.println("Enter the length of the rectangle:");
+        this.setLength();
+        System.out.println("Enter the breadth of the rectangle:");
+        this.setBreadth();
+        System.out.println("Area of the rectangle is "+this.area(this.length,this.breadth));
+        System.out.println("Perimeter of the rectangle is "+this.perimeter(this.length,this.breadth));
+    }
+}
