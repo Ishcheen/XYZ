@@ -23,21 +23,21 @@ public class Assignment2{
         if(i==1){
             Circle obj=new Circle();
         }
-        // else if(i==2){
-        //     Rectangle obj=new Rectangle();
-        // }
-        // else if(i==3){
-        //     Triangle obj=new Triangle();
-        // }
-        // else if(i==4){
-        //     Square obj=new Square();
-        // }
-        // else if(i==5){
-        //     Sphere obj=new Sphere();
-        // }
-        // else if(i==6){
-        //     Cylinder obj=new Cylinder();
-        // }
+        else if(i==2){
+            Rectangle obj=new Rectangle();
+        }
+        else if(i==3){
+            Triangle obj=new Triangle();
+        }
+        else if(i==4){
+            Square obj=new Square();
+        }
+        else if(i==5){
+            Sphere obj=new Sphere();
+        }
+        else if(i==6){
+            Cylinder obj=new Cylinder();
+        }
         else
         {
             System.out.println("Enter a valid index");
@@ -191,5 +191,46 @@ class Cylinder extends Shape{
         this.setRadius();
         System.out.println("Surface Area of the cylinder is "+(2*this.PI*(this.area(this.height,this.radius)+this.area(this.radius))));
         System.out.println("Volume of the cylinder is "+(this.PI*this.volume(this.radius,this.height,this.height))/3);
+    }
+}
+
+class Triangle{
+    private double height;
+    private double base;
+    private double a;
+    private double b;
+    private double c;
+    public void setHeight(){
+        this.height=this.setInput();
+    }
+    public double getHeight(){
+        return this.height;
+    }
+    public void setBase(){
+        this.base=this.setInput();
+    }
+    public double getBase(){
+        return this.base;
+    }
+    public void setA(){
+        this.a=this.setInput();
+    }
+    public void setB(){
+        this.b=this.setInput();
+    }
+    public void setC(){
+        this.c=this.setInput();
+    }
+    Triangle(){
+        System.out.println("Enter the height of the triangle:");
+        this.setHeight();
+        System.out.println("Enter the base of the triangle:");
+        this.setBase();
+        System.out.println("Enter the sides of the triangle:");
+        this.setA();
+        this.setB();
+        this.setC();
+        System.out.println("Area of the triangle is "+(this.area(this.height,this.base))/2);
+        System.out.println("Perimeter of the triangle is "+this.perimeter(this.a,this.b,this.c));
     }
 }
