@@ -152,3 +152,19 @@ class Square extends Shape{
         System.out.println("Perimeter of the square is "+4*this.perimeter(this.length));
     }
 }
+
+class Sphere extends Shape{
+    private double radius;
+    public void setRadius(){
+        this.radius=this.setInput();
+    }
+    public double getRadius(){
+        return this.radius;
+    }
+    Sphere(){
+        System.out.println("Enter the radius of the sphere:");
+        this.setRadius();
+        System.out.println("Surface Area of the sphere is "+4*this.PI*this.area(this.radius));
+        System.out.println("Volume of the sphere is "+(4*this.PI*this.volume(this.radius))/3);
+    }
+}
