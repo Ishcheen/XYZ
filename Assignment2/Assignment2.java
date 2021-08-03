@@ -168,3 +168,28 @@ class Sphere extends Shape{
         System.out.println("Volume of the sphere is "+(4*this.PI*this.volume(this.radius))/3);
     }
 }
+
+class Cylinder extends Shape{
+    private double height;
+    private double radius;
+    public void setHeight(){
+        this.height=this.setInput();
+    }
+    public double getHeight(){
+        return this.height;
+    }
+    public void setRadius(){
+        this.radius=this.setInput();
+    }
+    public double getRadius(){
+        return this.radius;
+    }
+    Cylinder(){
+        System.out.println("Enter the height of the cylinder:");
+        this.setHeight();
+        System.out.println("Enter the radius of the cylinder:");
+        this.setRadius();
+        System.out.println("Surface Area of the cylinder is "+(2*this.PI*(this.area(this.height,this.radius)+this.area(this.radius))));
+        System.out.println("Volume of the cylinder is "+(this.PI*this.volume(this.radius,this.height,this.height))/3);
+    }
+}
