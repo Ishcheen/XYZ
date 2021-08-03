@@ -15,6 +15,20 @@ public class Assignment1{
     
 }
 
+class Pair implements Comparable<Pair> {
+    String key;
+    Integer value;
+
+    public Pair(String key, Integer value) {
+        this.key = key;
+        this.value = value;
+    }
+
+    @Override
+    public int compareTo(Pair o) {
+        return o.value-value;
+    }
+}
 
 class ReadAFile{
     /**
@@ -58,26 +72,31 @@ class ReadAFile{
      * The total count is written in Output2.txt file in the format 'word-count'
      */
     public static void readWords(){
+        PriorityQueue<Pair> pq=new PriorityQueue<Pair>();
         try{
             File wordFile=new File("./words.txt");
             FileReader fileRdr=new FileReader(wordFile);
             BufferedReader rdr=new BufferedReader(fileRdr);
             String word;
+            BufferedWriter writer= new BufferedWriter(new FileWriter("Output2.txt",true));
             while((word=rdr.readLine())!=null){
                 int count=0;
                 File urlsFile= new File("./urls.txt");
                 FileReader fileReader=new FileReader(urlsFile);
                 BufferedReader reader = new BufferedReader(fileReader);
                 String line;
-                BufferedWriter writer= new BufferedWriter(new FileWriter("Output2.txt",true));
                 while((line=reader.readLine())!=null){
                     downloadWebPage(line);
                     count+=matchCount(word);
                 }
-                writer.write(word+"-"+count);
-                writer.write("\n");
-                writer.close();
+                pq.add(new Pair(word,count));
             }
+            while(!pq.isEmpty()){
+                Pair temp=pq.poll();
+                writer.write(temp.key+"-"+temp.value);
+                writer.write("\n");
+            }
+            writer.close();
         }
         catch ( IOException ioerror){
             System.out.println("IO Exception raised");
