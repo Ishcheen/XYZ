@@ -3,7 +3,21 @@
  */
 import java.util.*;
 
-
+public class Assignment4{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter 1 for Account Overdraw Demo and 2 for Account Overdraw Safe Demo");
+        int x=sc.nextInt();
+        if(x==1){
+            System.out.println("Account OverDraw Demo:");
+            AccountOverdrawDemo.main();
+        }
+        else if(x==2){
+            System.out.println("Account OverDraw Safe Demo:");
+            AccountOverdrawSafeDemo.main();
+        }
+    }
+}
 
 class Account{
     private String name;
