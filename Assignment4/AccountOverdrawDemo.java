@@ -24,5 +24,20 @@ class AccountOverdrawDemo implements Runnable{
         two.setName("Person 2");
         one.start();
         two.start();
-    }    
+    }
+
+    public void run(){
+        for(int i=0; i<=10; i++){
+            if(account.getBalance()>=100){
+                System.out.println((i+1)+". "+Thread.currentThread().getName()+" has withdrawn 100 rupees from the bank."
+                                             +" Remaining balance: "+account.getBalance());
+                account.withdraw(100);
+            }
+            if(account.getBalance()<0){
+                System.out.println("Overdrawn");
+                break;
+            }
+        }
+    }
+    
 }
