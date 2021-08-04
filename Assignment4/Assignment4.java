@@ -13,3 +13,16 @@ class Account{
         balance= balance-amount;
     }
 }
+
+class AccountOverdrawDemo implements Runnable{
+    Account account=new Account();
+    public static void main(String args){
+        AccountOverdrawDemo bankWithdraw= new AccountOverdrawDemo();
+        Thread one=new Thread(bankWithdraw);
+        Thread two=new Thread(bankWithdraw);
+        one.setName("Person 1");
+        two.setName("Person 2");
+        one.start();
+        two.start();
+    }    
+}
