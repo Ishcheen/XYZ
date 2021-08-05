@@ -8,28 +8,41 @@ import java.text.ParseException;
 
 public class Assignment5{
     public static void main(String[] args){
-        // SerializationTest.main(args[0]);
-        DeserializationTest.main(args[0]);
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter 1 to Seriale operation and 2 to deserialize");
+        int n=sc.nextInt();
+        if(n==1){
+            SerializationTest.main(args[0]);
+        }
+        else
+        {
+            DeserializationTest.main(args[0]);
+        }
     }
 }
 class Student implements Serializable{
     private String firstName;
-    private Date dateOfBirth;
+    private String dateOfBirth;
+    private Date dOB;
+    private static final long serialVersionUID=-189671429866048052L;
     Address address;
     Student(String firstName, String dateOfBirth){
         this.firstName=firstName;
         try{
-            this.dateOfBirth=new SimpleDateFormat("dd-MM-yyyy").parse(dateOfBirth);
+            this.dOB=new SimpleDateFormat("dd-MM-yyyy").parse(dateOfBirth);
         }
         catch(ParseException ex){
             System.out.println("Parse Exception arised");
         }
-        
+        this.dateOfBirth=dateOfBirth;
     }
     public String getName(){
         return this.firstName;
     }
-    public Date getDOB(){
+    public Date getDate(){
+        return this.dOB;
+    }
+    public String getStringDate(){
         return this.dateOfBirth;
     }
 }
@@ -102,7 +115,8 @@ class DeserializationTest{
             System.out.println(s4Restore.getName());
         }
         catch (IOException ex){
-            System.out.println("IO Exception raised");
+            ex.printStackTrace();
+            // System.out.println("IO Exception raised");
         }
         catch(ClassNotFoundException ex)
         {
