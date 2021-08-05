@@ -6,8 +6,8 @@ import java.io.*;
 
 public class Assignment5{
     public static void main(String[] args){
-        SerializationTest st=new SerializationTest();
-        st.main(args[0]);
+        SerializationTest.main(args[0]);
+        DeserializationTest.main(args[0]);
     }
 }
 class Student implements Serializable{
@@ -76,5 +76,29 @@ class SerializationTest{
         s2=null;
         s3=null;
         s4=null;
+    }
+}
+
+class DeserializationTest{
+    public static void main(String args){
+        try{
+            ObjectInputStream is=new ObjectInputStream(new FileInputStream(args));
+            Student s1Restore=(Student) is.readObject();
+            Student s2Restore=(Student) is.readObject();
+            Student s3Restore=(Student) is.readObject();
+            Student s4Restore=(Student) is.readObject();
+            is.close();
+            System.out.println(s1Restore.getName());
+            System.out.println(s2Restore.getName());
+            System.out.println(s3Restore.getName());
+            System.out.println(s4Restore.getName());
+        }
+        catch (IOException ex){
+            System.out.println("IO Exception raised");
+        }
+        catch(ClassNotFoundException ex)
+        {
+            System.out.println("ClassNotFoundException is caught");
+        }
     }
 }
