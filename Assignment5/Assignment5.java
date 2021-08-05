@@ -3,25 +3,33 @@
  */
 import java.util.*;
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 
 public class Assignment5{
     public static void main(String[] args){
-        SerializationTest.main(args[0]);
+        // SerializationTest.main(args[0]);
         DeserializationTest.main(args[0]);
     }
 }
 class Student implements Serializable{
     private String firstName;
-    private String dateOfBirth;
+    private Date dateOfBirth;
     Address address;
     Student(String firstName, String dateOfBirth){
         this.firstName=firstName;
-        this.dateOfBirth=dateOfBirth;
+        try{
+            this.dateOfBirth=new SimpleDateFormat("dd-MM-yyyy").parse(dateOfBirth);
+        }
+        catch(ParseException ex){
+            System.out.println("Parse Exception arised");
+        }
+        
     }
     public String getName(){
         return this.firstName;
     }
-    public String getDOB(){
+    public Date getDOB(){
         return this.dateOfBirth;
     }
 }
