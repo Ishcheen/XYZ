@@ -1,6 +1,8 @@
 /*
  * Classname: Assigment4.java
  */
+package assignment4;
+
 import java.util.*;
 
 public class Assignment4{
