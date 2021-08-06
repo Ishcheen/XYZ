@@ -1,6 +1,8 @@
 /*
  * Classname: Assigment5.java
  */
+package assignment5;
+
 import java.util.*;
 import java.io.*;
 import java.text.SimpleDateFormat;
@@ -24,7 +26,7 @@ class Student implements Serializable{
     private String firstName;
     private String dateOfBirth;
     private Date dOB;
-    private static final long serialVersionUID=-189671429866048052L;
+    private static final long serialVersionUID=644246523154555140L;
     Address address;
     Student(String firstName, String dateOfBirth){
         this.firstName=firstName;
@@ -115,11 +117,9 @@ class DeserializationTest{
             System.out.println(s4Restore.getName());
         }
         catch (IOException ex){
-            ex.printStackTrace();
-            // System.out.println("IO Exception raised");
+            System.out.println("IO Exception raised");
         }
-        catch(ClassNotFoundException ex)
-        {
+        catch(ClassNotFoundException ex){
             System.out.println("ClassNotFoundException is caught");
         }
     }
