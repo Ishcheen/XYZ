@@ -1,0 +1,94 @@
+/*
+ * Classname: Assigment4.java
+ */
+package assignment4;
+
+import java.util.*;
+
+public class Assignment4{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter 1 for Account Overdraw Demo and 2 for Account Overdraw Safe Demo");
+        int x=sc.nextInt();
+        if(x==1){
+            System.out.println("Account OverDraw Demo:");
+            AccountOverdrawDemo.main();
+        }
+        else if(x==2){
+            System.out.println("Account OverDraw Safe Demo:");
+            AccountOverdrawSafeDemo.main();
+        }
+    }
+}
+
+class Account{
+    private String name;
+    private int balance=1000;
+    public int getBalance(){
+        return this.balance;
+    }
+    public void withdraw(int amount){
+        balance= balance-amount;
+    }
+}
+
+class AccountOverdrawDemo implements Runnable{
+    Account account=new Account();
+    public static void main(){
+        AccountOverdrawDemo bankWithdraw= new AccountOverdrawDemo();
+        Thread one=new Thread(bankWithdraw);
+        Thread two=new Thread(bankWithdraw);
+        one.setName("Person 1");
+        two.setName("Person 2");
+        one.start();
+        two.start();
+    }
+
+    public void run(){
+        for(int i=0; i<=10; i++){
+            if(account.getBalance()>=100){
+                System.out.println((i+1)+". "+Thread.currentThread().getName()+" has withdrawn 100 rupees from the bank."
+                                    +" Remaining balance: "+account.getBalance());
+                account.withdraw(100);
+            }
+            if(account.getBalance()<0){
+                System.out.println("Overdrawn");
+                break;
+            }
+        }
+    }
+}
+
+class AccountOverdrawSafeDemo implements Runnable{
+    Account account=new Account();
+    public static void main(){
+        AccountOverdrawSafeDemo bankWithdraw= new AccountOverdrawSafeDemo();
+        Thread one=new Thread(bankWithdraw);
+        Thread two=new Thread(bankWithdraw);
+        one.setName("Person 1");
+        two.setName("Person 2");
+        one.start();
+        two.start();
+    }
+
+    public void run(){
+        for(int i=0; i<=10; i++){
+            makeWithdraw(100);
+            if(account.getBalance()<0){
+                System.out.println("Overdrawn");
+                break;
+            }
+        }
+    } 
+
+    private synchronized void makeWithdraw(int amount){
+        if(account.getBalance()>=amount){
+            System.out.println(Thread.currentThread().getName()+" has withdrawn 100 rupees from the bank."
+                                +" Remaining balance: "+account.getBalance());
+            account.withdraw(100);
+        }
+        else{
+            System.out.println("Withdrawal not possible");
+        }
+    }   
+}
