@@ -67,4 +67,24 @@ class Employee{
             System.out.println("IO Exception raised");
         }
     }
+    public void addEmployee(ArrayList<Employee> list){
+        Employee obj =new Employee();
+        System.out.println("Please provide the following information for the employee:");
+        System.out.println("Name: ");
+        Scanner sc=new Scanner(System.in);
+        String name=sc.nextLine();
+        obj.setName(name);
+        System.out.println("Email Address: ");
+        String emailId=sc.nextLine();
+        obj.setEmailId(emailId);
+        System.out.println("Age: ");
+        int age=sc.nextInt();
+        obj.setAge(age);
+        sc.nextLine();
+        System.out.println("Date of Birth: ");
+        String dob=sc.nextLine();
+        obj.setDOB(dob);
+        list.add(obj);
+        createFile(list);
+    }
 }
