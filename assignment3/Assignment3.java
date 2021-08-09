@@ -35,6 +35,18 @@ class Employee{
     public String getDOB(){
         return this.dateOfBirth;
     } 
+    public void createFile(ArrayList<Employee> list){
+        try{
+            BufferedWriter writer= new BufferedWriter(new FileWriter("employees.txt"));
+            for(Employee obj:list){
+                writer.write(obj.getName()+","+obj.getEmailId()+","+obj.getAge()+","+obj.getDOB()+"\n");
+            }
+            writer.close();
+        }
+        catch ( IOException ex){
+            System.out.println("IO Exception raised");
+        }
+    }
     public void createList(ArrayList<Employee> list){
         try{
             File employee=new File("employees.txt");
