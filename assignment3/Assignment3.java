@@ -133,3 +133,28 @@ class Employee{
         }
     }
 }
+
+class SortByName implements Comparator<Employee> {
+    public int compare(Employee a, Employee b)
+    {
+        return a.getName().compareTo(b.getName());
+    }
+}
+class SortByEmailId implements Comparator<Employee> {
+    public int compare(Employee a, Employee b)
+    {
+        return a.getEmailId().compareTo(b.getEmailId());
+    }
+}
+class SortByAge implements Comparator<Employee> {
+    public int compare(Employee a, Employee b)
+    {
+        return a.getAge() - b.getAge();
+    }
+}
+class SortByDOB implements Comparator<Employee> {
+    public int compare(Employee a, Employee b)
+    {
+        return a.getDOB().compareTo(b.getDOB());
+    }
+}
