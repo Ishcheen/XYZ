@@ -87,4 +87,16 @@ class Employee{
         list.add(obj);
         createFile(list);
     }
+    public void delete(ArrayList<Employee> list){
+        System.out.println("Enter the employee ID/name to delete: ");
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        for(Employee i: list){
+            if(i.getName().equals(s)){
+                list.remove(i);
+                createFile(list);
+                break;
+            }
+        }
+    }
 }
