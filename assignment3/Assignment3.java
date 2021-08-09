@@ -5,6 +5,8 @@ package assignment3;
 
 import java.util.*;
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 
 public class Assignment3{
     
@@ -33,7 +35,7 @@ class Employee{
     private String name;
     private String emailId;
     private int age;
-    private String dateOfBirth;
+    private Date dateOfBirth;
     public void setName(String name){
         this.name=name;
     }
@@ -53,9 +55,14 @@ class Employee{
         return this.age;
     }
     public void setDOB(String dateOfBirth){
-        this.dateOfBirth=dateOfBirth;
+        try{
+            this.dateOfBirth=new SimpleDateFormat("dd-MM-yyyy").parse(dateOfBirth);
+        }
+        catch(ParseException ex){
+            System.out.println("Parse Exception arised");
+        }
     }
-    public String getDOB(){
+    public Date getDOB(){
         return this.dateOfBirth;
     } 
      public void compare(int x, int y,ArrayList<Employee> list){
