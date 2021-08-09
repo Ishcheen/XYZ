@@ -6,6 +6,29 @@ package assignment3;
 import java.util.*;
 import java.io.*;
 
+public class Assignment3{
+    
+    public static void main(String[] args){
+        ArrayList<Employee> list=new ArrayList<Employee>();
+        Employee temp=new Employee();
+        temp.createList(list);
+        System.out.println("Enter index of the operation to be performed:"
+                            +"\n"+"1. Add"+"\n"+"2. Delete"+"\n"+"3. Search");
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        if(n==1){
+            temp.addEmployee(list);
+        }
+        else if(n==2){
+            temp.delete(list);
+        }
+        else
+        {
+            temp.search(list);
+        }
+    }
+}
+
 class Employee{
     private String name;
     private String emailId;
