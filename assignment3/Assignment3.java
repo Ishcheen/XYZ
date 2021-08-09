@@ -35,6 +35,48 @@ class Employee{
     public String getDOB(){
         return this.dateOfBirth;
     } 
+     public void compare(int x, int y,ArrayList<Employee> list){
+        if(x==1){
+            if(y==1){
+                Collections.sort(list, new SortByName());
+            }
+            else
+            {
+                Comparator c = Collections.reverseOrder(new SortByName());
+                Collections.sort(list,c);
+            }
+        }
+        else if(x==2){
+            if(y==1){
+                Collections.sort(list, new SortByEmailId());
+            }
+            else
+            {
+                Comparator c = Collections.reverseOrder(new SortByEmailId());
+                Collections.sort(list,c);
+            }
+        }
+        else if(x==3){
+            if(y==1){
+                Collections.sort(list, new SortByAge());
+            }
+            else
+            {
+                Comparator c = Collections.reverseOrder(new SortByAge());
+                Collections.sort(list,c);
+            }
+        }
+        else if(x==4){
+            if(y==1){
+                Collections.sort(list, new SortByDOB());
+            }
+            else
+            {
+                Comparator c = Collections.reverseOrder(new SortByDOB());
+                Collections.sort(list,c);
+            }
+        }
+    }
     public void createFile(ArrayList<Employee> list){
         try{
             BufferedWriter writer= new BufferedWriter(new FileWriter("employees.txt"));
@@ -109,6 +151,8 @@ class Employee{
         int y=Integer.parseInt(sc.nextLine());
         System.out.println("Direction: Enter 1 for ascending and 2 for descending:");
         int z=Integer.parseInt(sc.nextLine());
+        this.compare(y,z,list);
+        createFile(list);
         switch(x){
             case 1:
                 for(Employee i:list){
