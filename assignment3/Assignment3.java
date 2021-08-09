@@ -109,5 +109,27 @@ class Employee{
         int y=Integer.parseInt(sc.nextLine());
         System.out.println("Direction: Enter 1 for ascending and 2 for descending:");
         int z=Integer.parseInt(sc.nextLine());
+        switch(x){
+            case 1:
+                for(Employee i:list){
+                    System.out.println(i.getName());
+                }
+                break;
+            case 2:
+                for(Employee i:list){
+                    System.out.println(i.getEmailId());
+                }
+                break;
+            case 3:
+                for(Employee i:list){
+                    System.out.println(i.getAge());
+                }
+                break;
+            case 4:
+                for(Employee i:list){
+                    System.out.println(i.getDOB());
+                }
+                break;
+        }
     }
 }
