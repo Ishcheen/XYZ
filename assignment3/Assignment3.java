@@ -99,4 +99,15 @@ class Employee{
             }
         }
     }
+    public void search(ArrayList<Employee> list){
+        Scanner sc= new Scanner(System.in);
+        System.out.println("Enter the index of the query to be displayed from the following options: "
+                            +"\n"+"1. Name"+"\n"+"2. Email Id"+"\n"+"3. Age"+"\n"+"4. Date of Birth");
+        int x=Integer.parseInt(sc.nextLine());
+        System.out.println("Property to sort by: "+"\n"+"1. Name"+"\n"+"2. Email Id"+"\n"
+                            +"3. Age"+"\n"+"4. Date of Birth");
+        int y=Integer.parseInt(sc.nextLine());
+        System.out.println("Direction: Enter 1 for ascending and 2 for descending:");
+        int z=Integer.parseInt(sc.nextLine());
+    }
 }
